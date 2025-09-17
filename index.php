@@ -152,9 +152,9 @@
           <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Campaigns</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="./auth/index.php">Login</a></li>
           <li class="nav-item">
-            <a class="nav-link btn btn-signup px-4 py-2" href="#">Sign Up</a>
+            <a class="nav-link btn btn-signup px-4 py-2" href="./auth/register.php">Sign Up</a>
           </li>
         </ul>
       </div>
