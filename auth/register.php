@@ -1,3 +1,8 @@
+<?php
+session_start();
+$flash_errors = $_SESSION['flash_errors'] ?? [];
+unset($_SESSION['flash_errors']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -158,12 +163,21 @@
   <!-- Main Content -->
   <main class="flex-grow-1 d-flex flex-column align-items-center justify-content-center p-3 mt-5">
     <!-- Register Section -->
-    <section class="container mb-5">
+    <section class="container mb-5" id="register">
       <div class="row justify-content-center">
         <div class="col-md-6 col-lg-4">
           <div class="register-card p-4">
             <h2 class="fs-2 fw-bold text-center gradient-text mb-4">Sign Up</h2>
-            <form action="/register" method="POST">
+            <?php if (!empty($flash_errors)): ?>
+              <div class="alert alert-danger" role="alert">
+                <ul class="mb-0">
+                  <?php foreach ($flash_errors as $e): ?>
+                    <li><?php echo htmlspecialchars($e); ?></li>
+                  <?php endforeach; ?>
+                </ul>
+              </div>
+            <?php endif; ?>
+            <form action="./process_register.php" method="POST">
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
@@ -188,12 +202,12 @@
                 <button type="submit" class="btn btn-register py-2">Sign Up</button>
               </div>
               <div class="d-grid mb-3">
-                <a href="/auth/google" class="btn btn-google py-2">
+                <a href="#" class="btn btn-google py-2">
                   <img src="https://www.google.com/favicon.ico" alt="Google Icon" class="google-icon">
                   Continue with Google
                 </a>
               </div>
-              <p class="text-center">Already have an account? <a href="login.html">Log In</a></p>
+              <p class="text-center">Already have an account? <a href="./index.php">Log In</a></p>
             </form>
           </div>
         </div>
